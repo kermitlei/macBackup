@@ -1,0 +1,52 @@
+[user]
+	name = lei.zhang
+	email = lei.zhang@amlogc.com
+
+[color]                                        
+	branch = auto                            
+	diff = auto  
+	status = auto
+
+[color "branch"]  
+	current = yellow reverse  
+	local = yellow   
+	remote = green
+
+[color "diff"]  
+	meta = yellow bold  
+	frag = magenta bold  
+	old = red bold  
+	new = green bold
+
+[color "status"]  
+	added = yellow  
+	changed = green  
+	untracked = cyan
+ 
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    cvsup = !sh -c \"git stash && git cvsimport -v -k -i && git rebase origin && git stash pop\"
+    svnup = !sh -c \"git stash && git svn rebase && git stash pop\"
+    up = !sh -c \"git stash && git pull --rebase && git stash pop\"
+    logs  = log --stat --abbrev-commit --color-words
+    logo = log --abbrev-commit --pretty=oneline
+    diffs = diff -p --stat --color-words
+    shows = show --abbrev-commit
+    unstage = reset HEAD
+[http]
+	cookiefile = /Users/tiantian/.gitcookies
+[core]
+	excludesfile = /Users/tiantian/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.localized/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
